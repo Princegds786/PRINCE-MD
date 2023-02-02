@@ -5,10 +5,11 @@ RUN sudo dnf -y update &&\
     sudo dnf install -y git ffmpeg ImageMagick nodejs yarnpkg libwebp &&\
     sudo dnf clean all -y
 
-WORKDIR /prince
+WORKDIR /astro
 
-COPY . /prince
+COPY . /astro
 
 RUN yarn
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y ffmpeg
 
 CMD ["yarn", "start"]
